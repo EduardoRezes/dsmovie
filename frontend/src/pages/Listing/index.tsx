@@ -1,16 +1,21 @@
 import axios from "axios";
+import { useEffect, useState } from "react";
 import Moviecard from "components/MovieCard";
 import Pagination from "components/Pagination";
 import { BASE_URL } from "utils/requests";
+import { MoviePage } from "types/movie";
 
 function Listing() {
 
-    //Forma Errada
-    axios.get(`${BASE_URL}/movies?size=12&page=0`)
-        .then(response => {
-            console.log(response.data);
-        })
+    const [pageNumber, setPageNumber] = useState(0);
 
+    useEffect(() => {
+        axios.get(`${BASE_URL}/movies?size=12&page=0`)
+        .then(response => {
+            const data = response.data as MoviePage;
+            setPageNumber(data.number);
+        });
+    }, []);
 
     return (
         <>

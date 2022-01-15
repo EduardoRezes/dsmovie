@@ -18,8 +18,7 @@ function Moviecard( {movie} : Props) {
 
                 <Link to={`/form/${movie.id}`}>
                     <div className="btn btn-primary dsmovie-btn">Avaliar</div>
-                </Link>
-                
+                </Link>               
             </div>
         </div>
     );
